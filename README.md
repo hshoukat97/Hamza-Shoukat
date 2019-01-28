@@ -5,6 +5,7 @@ Repository for the interRAI Preliminary Screener web application (WAD course pro
 
 ### Prerequisites
 
+#### PIP Package Management System
 - Flask
 - cryptography
 
