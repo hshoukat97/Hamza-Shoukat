@@ -1,5 +1,7 @@
 {
-  "editor.detectIndentation": true,
-  "editor.tabSize": 8,
-  "editor.fontSize": 16.5
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.fontSize": 16.5,
+  "python.pythonPath": "venv\\Scripts\\python.exe"
 }
