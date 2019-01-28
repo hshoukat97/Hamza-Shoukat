@@ -1,4 +1,4 @@
-# health-screener
+# Health Screener
 Repository for the interRAI Preliminary Screener web application (WAD course project). 
 
 ## Getting Started
