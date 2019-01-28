@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    {% if title %}
+    <title>{{ title }} - interRAI Preliminary Screener</title>
+    {% else %}
+    {% endif %}
 </head>
 <body>
     {% block mainContent %}
