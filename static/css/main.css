@@ -6,7 +6,7 @@ header {
   background-color: #0078D7;
   color: #ffffff;
   padding: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 nav img {
@@ -14,27 +14,39 @@ nav img {
   top: 8px;
 }
 
-nav h1 {
+#navigation-header {
   display: inline;
+  color: white;
+  font-size: 1.75em;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-nav a {
+.navigation-link {
   color: white;
   font-size: 1.25em;
   padding-left: 60px;
   text-decoration: none;
 }
 
-nav a:hover {
+#navigation-link-right {
+  color: white;
+  font-size: 1.25em;
+  padding-left: 620px;
+  text-decoration: none;
+}
+
+.navigation-link:hover, #navigation-link-right:hover {
   text-decoration: underline;
 }
 
-main h1 {
+.top-header {
   text-align: center;
 }
 
-.midsection {
-  padding-left: 2em;
+.main-content {
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 footer {
