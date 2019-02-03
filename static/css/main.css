@@ -1,17 +1,48 @@
-header {
-  background-color: #0078D7;
-  color: white;
-  margin: 0
+body {
+  margin: 0;
 }
 
-header a {
+header {
+  background-color: #0078D7;
+  color: #ffffff;
+  padding: 20px;
+  padding-top: 10px;
+}
+
+nav img {
+  position: relative;
+  top: 8px;
+}
+
+nav h1 {
+  display: inline;
+}
+
+nav a {
   color: white;
+  font-size: 1.25em;
+  padding-left: 60px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 main h1 {
   text-align: center;
 }
 
-#footer {
+.midsection {
+  padding-left: 2em;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: #E3E3E3;
+  padding: 25px;
+  text-align: center;
 }
