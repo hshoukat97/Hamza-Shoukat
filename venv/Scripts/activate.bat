@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\projects\health-screener\venv"
+set "VIRTUAL_ENV=C:\projects\primary-care-screener\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
