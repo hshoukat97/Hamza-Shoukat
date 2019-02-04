@@ -1,17 +1,18 @@
-body {
+body, html {
   margin: 0;
+  font-family: 'Lato', sans-serif;
+  line-height: 2;
 }
 
+/* Top header and navigation */
 header {
   background-color: #0078D7;
   color: #ffffff;
-  padding: 20px;
-  padding-top: 5px;
 }
 
 nav img {
   position: relative;
-  top: 8px;
+  top: 10px;
 }
 
 #navigation-header {
@@ -25,14 +26,14 @@ nav img {
 .navigation-link {
   color: white;
   font-size: 1.25em;
-  padding-left: 60px;
+  margin-left: 90px;
   text-decoration: none;
 }
 
 #navigation-link-right {
   color: white;
   font-size: 1.25em;
-  padding-left: 620px;
+  padding-left: 580px;
   text-decoration: none;
 }
 
@@ -40,8 +41,10 @@ nav img {
   text-decoration: underline;
 }
 
+/* Main content */
 .top-header {
   text-align: center;
+  color: #323237;
 }
 
 .main-content {
@@ -49,6 +52,13 @@ nav img {
   margin-left: 30px;
 }
 
+.text-box {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+/* Footer - this needs to be improved so that it integrates into the webpage  
+more seemlessly without being fixed to the bottom of the page */
 footer {
   position: fixed;
   left: 0;
