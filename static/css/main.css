@@ -68,4 +68,5 @@ footer {
   background-color: #E3E3E3;
   padding: 25px;
   text-align: center;
+  z-index: 999;
 }
