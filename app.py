@@ -31,9 +31,9 @@ def index():
     # Needs to be modified to only return the top five most recent additions
     if request.method == "GET":
         cursor = g.db_conn.cursor()
-        cursor.execute('SELECT id, first_name, last_name FROM screener_instance')
+        cursor.execute('SELECT id, first_name, last_name, time_recorded FROM screener_instance')
         screener_instance = [dict(id=row[0], first_name=row[1], last_name=
-            row[2]) for row in cursor.fetchall()]
+            row[2], time_recorded=row[3]) for row in cursor.fetchall()]
         cursor.close()
 
     return render_template('index.html', title='Home', screener_instance=

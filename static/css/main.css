@@ -58,6 +58,13 @@ nav img {
   padding: 10px 5px;
 }
 
+table, th, tr, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 0 15px 0 15px;
+}
+
 /* Footer - this needs to be improved so that it integrates into the webpage  
 more seemlessly without being fixed to the bottom of the page */
 footer {
@@ -68,5 +75,4 @@ footer {
   background-color: #E3E3E3;
   padding: 25px;
   text-align: center;
-  z-index: 999;
 }
