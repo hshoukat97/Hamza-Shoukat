@@ -1,5 +1,11 @@
 from flask import Flask, render_template
+from flaskext.mysql import MySQL
+
 app = Flask(__name__)
+
+MYSQL_DATABASE_USER = 'PMadziak'
+MYSQL_DATABASE_PASSWORD = 'test3'
+MYSQL_DATABASE_DB = 'pc_screener'
 
 @app.route('/team4')
 def index():

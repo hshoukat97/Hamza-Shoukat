@@ -9,6 +9,7 @@ Repository for the interRAI Preliminary Screener web application (WAD course pro
 
 ##### Dependencies
 - Flask
+- flask-mysql
 - cryptography
 
 ##### Development Dependencies
