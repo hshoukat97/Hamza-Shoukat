@@ -14,6 +14,7 @@ Repository for the interRAI Preliminary Screener web application (WAD course pro
 
 ##### Development Dependencies
 - pylint
+- pytest
 
 ## Built With
 
