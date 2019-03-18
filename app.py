@@ -1,5 +1,3 @@
-# Landing page can contain something like the 5 most recent screener instances?
-
 from flask import Flask, render_template, g, request, redirect, url_for
 from flaskext.mysql import MySQL
 
@@ -28,7 +26,7 @@ def logTeardown(exception=None):
 
 @app.route('/team4')
 def index():
-    # Needs to be modified to only return the top five most recent additions
+    # Needs to be modified at some point to only return instances recorded by the assessor
     if request.method == "GET":
         cursor = g.db_conn.cursor()
         cursor.execute('SELECT id, first_name, last_name, time_recorded FROM screener_instance ORDER BY time_recorded DESC LIMIT 5')

@@ -4,12 +4,44 @@
 <div>
   <h1 class="top-header">Screener</h1>
   <div class="main-content">
+    <h2>Section A - Identification Information</h2>
     <form class="new-instance" action="/team4/screener_instance" method="post" enctype="application/x-www-form-urlencoded">
-      <label>First Name:</label>
-      <input type="text" class="text-box" id="first_name" name="first_name">
-      <label>Last Name:</label>
-      <input type="text" class="text-box" id="last_name" name="last_name">
-      <input type="submit" value="Submit" />
+      <h3 class="form-header">Name</h3>
+        <label>First Name:</label>
+          <input type="text" class="text-box" id="first_name" name="first_name">
+        <label>Last Name:</label>
+          <input type="text" class="text-box" id="last_name" name="last_name">
+      <h3 class="form-header">Sex</h3>
+        <label for="male">Male</label>
+          <input type="radio" class="radio" id="male" name="sex" value="male">
+        </label>
+        <label for="female">Female</label>
+        <input type="radio" class="radio" id="female" name="sex" value="female"><br />
+      <h3 class="form-header">Birthdate</h3>
+        <input id="date" type="date">
+      <h3 class="form-header">Numeric Identifiers</h3>
+        <label>Health Card Number</label>
+          <input type="text" id="health-card-number" name="health-card-number" minlength="12" maxlength="12" size="13"><br />
+        <label>Province or Territory Issuing Health Card Number</label>
+          <input type="text" id="place-issued" name="place-issued" minlength="2" maxlength="2" size="3" default="ON"><br />
+        <label>Case Record Number</label>
+          <input type="text" id="case-record-number" name="case-record-number"><br />
+
+      <h3 class="form-header">Province or Territory and Postal Code of Usual Arrangement</h3>
+      <h3 class="form-header">Facility/Agency Identifier</h3>
+      <h3 class="form-header">Primary Language</h3>
+      <h3 class="form-header">Interpretor Need</h3>
+      <h3 class="form-header">Reasons for Referral/Presentation</h3>
+
+      <h3 class="form-header">Assessment Reference Date</h3>
+        <input id="date" type="date">
+
+    <h2>Section B - Screener</h2>
+
+      <input type="submit" value="Submit" /><br /><br />
+
+    <h2>Section C - Summary</h2>
+      <h3 class="form-header">Assessment Urgency Algorithm Score</h3>
     </form>
   </div>
 </div>

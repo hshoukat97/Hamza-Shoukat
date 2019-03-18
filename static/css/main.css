@@ -1,12 +1,31 @@
-body, html {
+/* Grid and HTML */
+
+.grid_container {
+  display: grid;
+  grid-template-areas: "header" 
+                       "main" 
+                       "footer";
+  grid-template-rows: 60px
+                      1fr
+                      40px;
+}
+
+.grid_container * {
   margin: 0;
   font-family: 'Lato', sans-serif;
-  font-size: 16px; 
   line-height: 2;
 }
 
-/* Top header and navigation */
-header {
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header */
+
+.grid_container__header {
+  grid-area: header;
   background-color: #0078D7;
   color: #ffffff;
 }
@@ -42,7 +61,12 @@ nav img {
   text-decoration: underline;
 }
 
-/* Main content */
+/* Main Body */
+
+.grid_container__main {
+  grid-area: main;
+}
+
 .top-header {
   text-align: center;
   color: #323237;
@@ -65,14 +89,10 @@ table, th, tr, td {
   padding: 0 15px 0 15px;
 }
 
-/* Footer - this needs to be improved so that it integrates into the webpage  
-more seemlessly without being fixed to the bottom of the page */
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+/* Footer */ 
+
+.grid_container__footer {
+  grid-area: footer;
   background-color: #E3E3E3;
-  padding: 25px;
   text-align: center;
 }

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block mainContent %}
+
+<div>
+  <h1 class=top-header>Home Page</h1>
+  <div class="main-content">
+    <h2>Top 5 Most Recent Screener Results</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Time Recorded</th>
+      </tr>
+        {% for result in screener_instance %}
+          <tr>
+            <td>{{ result.last_name }}, {{ result.first_name }}</td> 
+            <td>{{result.time_recorded}}</td>
+          </tr>
+        {% endfor %}
+    </table>
+    <h2>Links</h2>
+    <p>
+      <a href="http://www.interrai.org/" target="_blank">interRAI Website</a>
+    </p>
+    <h2>Downloads</h2>
+    <ul>
+      <li><a href="/downloads/interRAI Preliminary Screener - Form and User Manual.pdf" 
+        download="">interRAI Preliminary Screener - Form and User Manual</a></li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

@@ -15,8 +15,8 @@
   <link rel="shortcut icon" type="image/png" href="/static/images/favicon.ico"> 
 </head>
 
-<body>
-  <header>
+<body class="grid_container">
+  <header class="grid_container__header">
     <nav>
       <img src="/static/images/rosette.png" alt="" height="40" width="40">
       <a href='/team4' id="navigation-header">Primary Care Screener</a>
@@ -26,12 +26,12 @@
     </nav>
   </header>
   
-  <main>
+  <main class="grid_container__main">
   {% block mainContent %}
   {% endblock %}
   </main>
 
-	<footer>
+	<footer class="grid_container__footer">
     Powered by Python & Flask - Developed by Mike Lukina & Hamza Shoukat &copy; 
     2019
 	</footer>
