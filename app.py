@@ -28,13 +28,7 @@ def logTeardown(exception=None):
 def index():
     # Needs to be modified at some point to only return instances recorded by the assessor
     if request.method == "GET":
-        cursor = g.db_conn.cursor()
-        cursor.execute('SELECT id, first_name, last_name, time_recorded FROM screener_instance ORDER BY time_recorded DESC LIMIT 5')
-        screener_instance = [dict(id=row[0], first_name=row[1], last_name=
-            row[2], time_recorded=row[3]) for row in cursor.fetchall()]
-        cursor.close()
-
-    return render_template('index.html', title='Home', screener_instance=
+        return render_template('index.html', title='Home', screener_instance=
         screener_instance)
 
 @app.route('/team4/dashboard')
@@ -42,7 +36,7 @@ def dashboard():
     # Needs to be modified at some point to only return instances recorded by the assessor
     if request.method == "GET":
         cursor = g.db_conn.cursor()
-        cursor.execute('SELECT id, first_name, last_name, time_recorded FROM screener_instance ORDER BY time_recorded DESC LIMIT 5')
+        cursor.execute('SELECT id, first_name, last_name, time_recorded FROM patient ORDER BY time_recorded DESC LIMIT 5')
         screener_instance = [dict(id=row[0], first_name=row[1], last_name=
             row[2], time_recorded=row[3]) for row in cursor.fetchall()]
         cursor.close()
@@ -58,10 +52,11 @@ def identification_information():
     elif request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
+        primary_langauge = request.form['primary_language']
 
         cursor = g.db_conn.cursor()
-        cursor.execute('INSERT INTO screener_instance(first_name, last_name) VALUES (%s, %s)', 
-            (first_name, last_name))
+        cursor.execute('INSERT INTO screener_instance(first_name, last_name, primary_language) VALUES (%s, %s, %s)', 
+            (first_name, last_name, primary_langauge))
 
         g.db_conn.commit()
         cursor.close()
@@ -84,7 +79,7 @@ def screener_instance():
         g.db_conn.commit()
         cursor.close()
 
-        return redirect(url_for('screener_instance'))
+        return redirect(url_for('dashboard'))
     
 if __name__ == '__main__':
     app.run(host='localhost', port='5004', debug=True)
