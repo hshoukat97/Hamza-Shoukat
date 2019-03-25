@@ -130,6 +130,8 @@ function calculate_aua_score() {
   console.log("informal helper value: " + get_informal_helper_status());
   console.log("self reported mood value: " + get_self_reported_mood_value());
   console.log("personal hygiene value: " + get_personal_hygiene_value());
+  console.log(get_assessment_urgency_score()); 
+  
   if (get_assessment_urgency_score() >= 3) {
     alert("Your assessment urgency score is " + get_assessment_urgency_score() + "\nThis patient requires a CHA assessment");
   }
