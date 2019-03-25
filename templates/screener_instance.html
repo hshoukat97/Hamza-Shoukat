@@ -1,49 +1,63 @@
 {% extends "layout.html" %}
 {% block mainContent %}
 
-<div>
-  <h1 class="top-header">Screener</h1>
-  <div class="main-content">
-    <h2>Section A - Identification Information</h2>
-    <form class="new-instance" action="/team4/screener_instance" method="post" enctype="application/x-www-form-urlencoded">
-      <h3 class="form-header">Name</h3>
-        <label>First Name:</label>
-          <input type="text" class="text-box" id="first_name" name="first_name">
-        <label>Last Name:</label>
-          <input type="text" class="text-box" id="last_name" name="last_name">
-      <h3 class="form-header">Sex</h3>
-        <label for="male">Male</label>
-          <input type="radio" class="radio" id="male" name="sex" value="male">
-        </label>
-        <label for="female">Female</label>
-        <input type="radio" class="radio" id="female" name="sex" value="female"><br />
-      <h3 class="form-header">Birthdate</h3>
-        <input id="date" type="date">
-      <h3 class="form-header">Numeric Identifiers</h3>
-        <label>Health Card Number</label>
-          <input type="text" id="health-card-number" name="health-card-number" minlength="12" maxlength="12" size="13"><br />
-        <label>Province or Territory Issuing Health Card Number</label>
-          <input type="text" id="place-issued" name="place-issued" minlength="2" maxlength="2" size="3" default="ON"><br />
-        <label>Case Record Number</label>
-          <input type="text" id="case-record-number" name="case-record-number"><br />
-
-      <h3 class="form-header">Province or Territory and Postal Code of Usual Arrangement</h3>
-      <h3 class="form-header">Facility/Agency Identifier</h3>
-      <h3 class="form-header">Primary Language</h3>
-      <h3 class="form-header">Interpretor Need</h3>
-      <h3 class="form-header">Reasons for Referral/Presentation</h3>
-
-      <h3 class="form-header">Assessment Reference Date</h3>
-        <input id="date" type="date">
-
-    <h2>Section B - Screener</h2>
-
-      <input type="submit" value="Submit" /><br /><br />
-
-    <h2>Section C - Summary</h2>
-      <h3 class="form-header">Assessment Urgency Algorithm Score</h3>
-    </form>
-  </div>
-</div>
+<h2 class="form-section-header">Section B - Screener</h2>
+  <h3>Search Patient</h3>
+  <label>Name:</label>
+  <input type="text" class="text-box" id="name" name="name">
+  <form class="new-instance" action="/team4/screener_instance" method="post" enctype="application/x-www-form-urlencoded"></form>
+  <h3 class="form-header">Cognitive Skills for Daily Decision Making</h3>
+    <p class="description"><i>Making decisions regarding tasks of daily life -
+      e.g., when to get up or have meals, which clothes to wear or 
+      activities to do</i>
+    </p>
+    <select name="cognitive-skills">
+        <option value="independent">Independent</option>
+        <option value="modified-independent">Modified independent or any impairment</option>
+    </select>
+  <h3 class="form-header">Activities of Daily Living</h3>
+    <p class="description"><i>Most dependent episode over last 24 hours. If
+    ADL did not occur in the last 24 hours, code the most recent occurance.</i>
+    </p>
+  <h3 class="form-header">Dyspnea (Shortness of Breath)</h3>
+    <select name="dyspnea">
+        <option value="absence">Absence of symptom</option>
+        <option value="absent-at-rest-moderate">Absent at rest, but present 
+          when performed moderate activities
+        </option>
+        <option value="absent-at-rest-normal">Absent at rest, but present 
+          when performed normal day-to-day activities
+        </option>
+        <option value="present-at-rest">Present at rest</option>
+    </select>
+  <h3 class="form-header">Self Reported Health</h3>
+    <p class="description"><i>Ask, "In general, how would you rate your
+      health?"</i>
+    </p>
+    <select name="self-reported-health">
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="fair">Fair</option>
+        <option value="poor">Poor</option>
+        <option value="no-response">Could not (would not) respond</option>
+    </select>
+  <h3 class="form-header">Instability of Conditions</h3>
+  <h3 class="form-header">Self-Reported Mood</h3>
+    <p class="description"><i>Ask, "IN LAST 3 DAYS, have you felt sad,
+      depressed, or hopeless?"</i>
+    </p>
+    <select name="self-reported-mood">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+        <option value="no-response">Could not (would not) respond</option>
+    </select>
+  <h3 class="form-header">Informal Helper Status</h3>
+  <label for="male">Male</label>
+    <input type="radio" class="radio" id="male" name="sex" value="male">
+  </label>
+  <label for="female">Female</label>
+    <input type="radio" class="radio" id="female" name="sex" value="female"><br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  <br /><br />
 
 {% endblock %}

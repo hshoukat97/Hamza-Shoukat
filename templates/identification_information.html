@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block mainContent %}
+
+<h2 class="form-section-header">Section A - Identification Information</h2>
+
+<form action="/team4/identification_information" method="post" enctype="application/x-www-form-urlencoded">
+  <h3>Name</h3>
+  <div class="form-group row">
+    <label for="first-name" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="first_name" name="first_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="middle-initial" class="col-sm-2 col-form-label">Middle Initial</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="middle_initial" name="middle_initial">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="last-name" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="last_name" name="last_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="jr-sr" class="col-sm-2 col-form-label">Jr/Sr</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="jr-sr" name="jr-sr">
+    </div>
+  </div>
+  <h3>Sex</h3>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="male" id="male" value="male">
+          <label class="form-check-label" for="male">
+            male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="female" id="female" value="female">
+          <label class="form-check-label" for="female">
+            female
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Birthdate</h3>
+  <div class="form-group row">
+    <label for="birthdate" class="col-sm-2 col-form-label">Birthdate</label>
+    <div class="col-sm-10">
+      <input class="datepicker" type="date">
+    </div>
+  </div>
+  <h3 class="form-header">Numeric Identifiers</h3>
+  <div class="form-group row">
+    <label for="health-card-number" class="col-sm-2 col-form-label">Health Card Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="health-card-number" name="health-card-number">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="place-issued" class="col-sm-2 col-form-label">Province or Territory issuing health card</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="place-issued" name="place-issued">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="place-issued" class="col-sm-2 col-form-label">Case Record Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="case-record-number" name="case-record-number">
+    </div>
+  </div>
+  <h3 class="form-header">Province or Territory and Postal Code of Usual Arrangement</h3>
+  <div class="form-group row">
+    <label for="province-or-territory" class="col-sm-2 col-form-label">Province or Territory</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="province-or-territory" name="province-or-territory">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="postal-code" class="col-sm-2 col-form-label">Postal code of usual living arrangement</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="postal-code" name="postal-code">
+    </div>
+  </div>
+  <h3 class="form-header">Facility/Agency Identifier</h3>
+  <div class="form-group row">
+    <label for="facility-identifier" class="col-sm-2 col-form-label">Facility or Agency Identifier</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="facility-identifier" name="facility-identifier">
+    </div>
+  </div>
+  <h3 class="form-header">Primary Language</h3>
+  <div class="form-group row">
+      <label for="primary-language">Primary Language</label>
+      <div class="col-sm-10">
+      <select id="primary-language" class="form-control">
+        <option selected>English</option>
+        <option>French</option>
+      </select>
+    </div>
+    </div>
+    <h3 class="form-header">Interpretor Need</h3>
+    <div class="form-group row">
+        <label for="interpretor-need">Interpretor Need</label>
+        <div class="col-sm-10">
+        <select id="interpretor-need" class="form-control">
+          <option selected>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      </div>
+      <h3 class="form-header">Reasons for Referral/Presentation</h3>
+      <div class="form-group row">
+          <label for="reason-for-referral">Reasons for Referral/Presentation</label>
+          <textarea class="form-control" rows="5" id="reason-for-referral"></textarea>
+        </div>
+        <h3 class="form-header">Assessment Reference Date</h3>
+        <input id="date" type="date">
+      <div class="col-sm-10">
+        <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </div>
+      </form>
+      <br />
+{% endblock %}

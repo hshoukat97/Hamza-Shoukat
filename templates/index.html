@@ -4,19 +4,35 @@
 <div>
   <h1 class=top-header>Home Page</h1>
   <div class="main-content">
-    <h2>Top 5 Most Recent Screener Results</h2>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Time Recorded</th>
-      </tr>
-        {% for result in screener_instance %}
-          <tr>
-            <td>{{ result.last_name }}, {{ result.first_name }}</td> 
-            <td>{{result.time_recorded}}</td>
-          </tr>
-        {% endfor %}
-    </table>
+    <h2>Welcome to interRAI's Preliminary Screener</h2>
+    <p>The interRAI Preliminary Screener was created to provide information to support the intake
+        process. Its design was guided by two main goals:<br />
+        a) to support decision-making;<br />
+        b) to record basic information about persons who would not be receiving a comprehensive
+        assessment with the interRAI CHA at a later stage.<br /><br />
+        The interRAI Preliminary Screener may be completed as part of an in-person interview, or over
+        the telephone.<br /><br />
+        In designing the interRAI Preliminary Screener, it was recognized that assessors interact with
+        multiple informants (for example, prospective persons, spouses, children, health professionals)
+        who contact community support agencies for a variety of purposes (for example, some may
+        request a specific service whereas others needing services may initially ask for information but
+        not services). The needs of the person are expected to include both those explicitly stated by
+        informants, as well as previously unrecognized ones.<br /><br />
+        The interRAI Preliminary Screener is not a substitute for the more comprehensive interRAI
+        CHA. It records only the most essential information needed at the time of intake to support
+        decisions related to the need for a more comprehensive assessment. The interRAI Preliminary
+        Screener is not intended to support care planning, but it does provide some important clinical
+        information needed at the onset of community support service provision.<br /><br />
+        The interRAI Preliminary Screener is designed to be used as a multi-step process involving
+        documentation and decision-making in the following sections:<br /><br />
+        1. Section A documents demographic information and the reason for referral.<br />
+        2. Section B contains important items used in a decision-making algorithm to differentiate
+        persons who do not require further screening or assessment from those who are likely to
+        benefit from further evaluation. Based on the results of the screening items in this section,
+        along with professional judgment, the decision is made about completing, or not
+        completing, a full interRAI CHA.<br />
+        3. Section C records summary information regarding clinical decisions.
+    </p>
     <h2>Links</h2>
     <p>
       <a href="http://www.interrai.org/" target="_blank">interRAI Website</a>
