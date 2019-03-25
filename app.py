@@ -69,17 +69,7 @@ def screener_instance():
         return render_template('screener_instance.html')
     
     elif request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-
-        cursor = g.db_conn.cursor()
-        cursor.execute('INSERT INTO screener_instance(first_name, last_name) VALUES (%s, %s)', 
-            (first_name, last_name))
-
-        g.db_conn.commit()
-        cursor.close()
-
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('screener_instance'))
     
 if __name__ == '__main__':
     app.run(host='localhost', port='5004', debug=True)

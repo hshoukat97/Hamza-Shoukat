@@ -2,93 +2,102 @@
 {% block mainContent %}
 
 <h2 class="form-section-header">Section B - Screener</h2>
-  <h3>Search Patient</h3>
-  <label>Name:</label>
-  <input type="text" class="text-box" id="name" name="name">
-  <form class="new-instance" id="aua" action="/team4/screener_instance" method="post" enctype="application/x-www-form-urlencoded"></form>
+<h3>Search Patient</h3>
+<label>Name:</label>
+<input type="text" class="text-box" id="name" name="name">
+<form class="new-instance" id="aua" action="/team4/screener_instance" method="post"
+  enctype="application/x-www-form-urlencoded">
   <h3 class="form-header">Cognitive Skills for Daily Decision Making</h3>
-    <p class="description"><i>Making decisions regarding tasks of daily life -
-      e.g., when to get up or have meals, which clothes to wear or 
+  <p class="description"><i>Making decisions regarding tasks of daily life -
+      e.g., when to get up or have meals, which clothes to wear or
       activities to do</i>
-    </p>
-    <select name="cognitive-skills" id="cognitive-skills">
-        <option value=0>Independent</option>
-        <option value=1>Modified independent or any impairment</option>
-    </select>
+  </p>
+  <select name="cognitive-skills" id="cognitive-skills">
+    <option value=0>Independent</option>
+    <option value=1>Modified independent or any impairment</option>
+  </select>
   <h3 class="form-header">Activities of Daily Living</h3>
-    <p class="description"><i>Most dependent episode over last 24 hours. If
-    ADL did not occur in the last 24 hours, code the most recent occurance.</i>
-    </p>
-    <h4>Bathing</h4>
-    <select name="bathing" id="bathing">
-        <option value=0>Independent or set-up help only</option>
-        <option value=1>Supervision or any physical assistance</option>
-    </select>
-    <h4>Personal Hygiene</h4>
-    <select name="personal-hygiene" id="personal-hygiene">
-        <option value=0>Independent or set-up help only</option>
-        <option value=1>Supervision or any physical assistance</option>
-    </select>
-    <h4>Dressing Lower Body</h4>
-    <select name="dressing-lower-body" id="dressing-lower-body">
-        <option value=0>Independent or set-up help only</option>
-        <option value=1>Supervision or any physical assistance</option>
-    </select>
-    <h4>Locomotion</h4>
-    <select name="locomotion" id="locomotion">
-        <option value=0>Independent or set-up help only</option>
-        <option value=1>Supervision or any physical assistance</option>
-    </select>
+  <p class="description"><i>Most dependent episode over last 24 hours. If
+      ADL did not occur in the last 24 hours, code the most recent occurance.</i>
+  </p>
+  <h4>Bathing</h4>
+  <select name="bathing" id="bathing">
+    <option value=0>Independent or set-up help only</option>
+    <option value=1>Supervision or any physical assistance</option>
+  </select>
+  <h4>Personal Hygiene</h4>
+  <select name="personal-hygiene" id="personal-hygiene">
+    <option value=0>Independent or set-up help only</option>
+    <option value=1>Supervision or any physical assistance</option>
+  </select>
+  <h4>Dressing Lower Body</h4>
+  <select name="dressing-lower-body" id="dressing-lower-body">
+    <option value=0>Independent or set-up help only</option>
+    <option value=1>Supervision or any physical assistance</option>
+  </select>
+  <h4>Locomotion</h4>
+  <select name="locomotion" id="locomotion">
+    <option value=0>Independent or set-up help only</option>
+    <option value=1>Supervision or any physical assistance</option>
+  </select>
   <h3 class="form-header">Dyspnea (Shortness of Breath)</h3>
-    <select name="dyspnea" id="dyspnea">
-        <option value=0>Absence of symptom</option>
-        <option value=1>Absent at rest, but present 
-          when performed moderate activities
-        </option>
-        <option value=2>Absent at rest, but present 
-          when performed normal day-to-day activities
-        </option>
-        <option value=3>Present at rest</option>
-    </select>
+  <select name="dyspnea" id="dyspnea">
+    <option value=0>Absence of symptom</option>
+    <option value=1>Absent at rest, but present
+      when performed moderate activities
+    </option>
+    <option value=2>Absent at rest, but present
+      when performed normal day-to-day activities
+    </option>
+    <option value=3>Present at rest</option>
+  </select>
   <h3 class="form-header">Self Reported Health</h3>
-    <p class="description"><i>Ask, "In general, how would you rate your
+  <p class="description"><i>Ask, "In general, how would you rate your
       health?"</i>
-    </p>
-    <select id="self-reported-health" name="self-reported-health">
-        <option value=0>Excellent</option>
-        <option value=1>Good</option>
-        <option value=2>Fair</option>
-        <option value=3>Poor</option>
-        <option value=8>Could not (would not) respond</option>
-    </select>
+  </p>
+  <select id="self-reported-health" name="self-reported-health">
+    <option value=0>Excellent</option>
+    <option value=1>Good</option>
+    <option value=2>Fair</option>
+    <option value=3>Poor</option>
+    <option value=8>Could not (would not) respond</option>
+  </select>
   <h3 class="form-header">Instability of Conditions</h3>
-  <p>Conditions/diseases make cognitive, ADL, mood, or behaviour patterns 
+  <p>Conditions/diseases make cognitive, ADL, mood, or behaviour patterns
     unstable (fluctuating, precarious, or deteriorating)</p>
-  <select name="instability-of-conditions-a" id="instability-of-conditions-a">
-      <option value=0>No</option>
-      <option value=1>Yes</option>
+  <select id="instability-of-conditions-a" name="instability-of-conditions-a">
+    <option value=0>No</option>
+    <option value=1>Yes</option>
   </select>
   <p>Experiencing an acute episode, or a flare-up of a recurrent or chronic problem</p>
-    <select name="instability-of-conditions-b" id="instability-of-conditions-b">
-        <option value=0>No</option>
-        <option value=1>Yes</option>
-    </select>
+  <select name="instability-of-conditions-b" id="instability-of-conditions-b">
+    <option value=0>No</option>
+    <option value=1>Yes</option>
+  </select>
   <h3 class="form-header">Self-Reported Mood</h3>
-    <p class="description"><i>Ask, "IN LAST 3 DAYS, have you felt sad,
+  <p class="description"><i>Ask, "IN LAST 3 DAYS, have you felt sad,
       depressed, or hopeless?"</i>
-    </p>
-    <select name="self-reported-mood">
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-        <option value="no-response">Could not (would not) respond</option>
-    </select>
+  </p>
+  <select name="self-reported-mood" id="self-reported-mood">
+    <option value=0>No</option>
+    <option value=1>Yes</option>
+    <option value=8>Could not (would not) respond</option>
+  </select>
   <h3 class="form-header">Informal Helper Status</h3>
-  <label for="male">Male</label>
-    <input type="radio" class="radio" id="male" name="sex" value="male">
-  </label>
-  <label for="female">Female</label>
-    <input type="radio" class="radio" id="female" name="sex" value="female"><br />
-    <button type="submit" class="btn btn-primary" onclick="calculate_aua_score()">Submit</button>
+  <p>Primary informal helper expresses feelings of distress, anger, or depression</p>
+  <select name="informal-helper-status-a" id="informal-helper-status-a">
+    <option value=0>No</option>
+    <option value=1>Yes</option>
+  </select>
+  <p>Family of close friends report feeling overwhelmed by person's illness</p>
+  <select name="informal-helper-status-b" id="informal-helper-status-b">
+    <option value=0>No</option>
+    <option value=1>Yes</option>
+  </select>
   <br /><br />
+
+  <button type="submit" class="btn btn-primary" onclick="calculate_aua_score()">Submit</button>
+</form>
+<br />
 
 {% endblock %}
