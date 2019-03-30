@@ -54,48 +54,48 @@
   </fieldset>
   <h3>Birthdate</h3>
   <div class="form-group row">
-    <label for="birthdate" class="col-xs-2 col-form-label">Birthdate</label>
+    <label for="dob" class="col-xs-2 col-form-label">Birthdate</label>
     <div class="col-xs-10">
-      <input class="datepicker" type="date">
+      <input class="datepicker" type="date" name="dob" id="dob">
     </div>
   </div>
   <h3 class="form-header">Numeric Identifiers</h3>
   <div class="form-group row">
     <label for="health-card-number" class="col-xs-2 col-form-label">Health Card Number</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="health-card-number" name="health-card-number">
+      <input type="text" class="form-control" id="health-card-number" name="health_card_number">
     </div>
   </div>
   <div class="form-group row">
-    <label for="place-issued" class="col-xs-2 col-form-label">Province or Territory issuing health card</label>
+    <label for="province-or-territory-issued" class="col-xs-2 col-form-label">Province or Territory Issuing Health Card</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="place-issued" name="place-issued">
+      <input type="text" class="form-control" id="province-or-territory-issued" name="province_or_territory_issued">
     </div>
   </div>
   <div class="form-group row">
     <label for="place-issued" class="col-xs-2 col-form-label">Case Record Number</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="case-record-number" name="case-record-number">
+      <input type="text" class="form-control" id="case-record-number" name="case_record_number">
     </div>
   </div>
   <h3 class="form-header">Province or Territory and Postal Code of Usual Arrangement</h3>
   <div class="form-group row">
     <label for="province-or-territory" class="col-xs-2 col-form-label">Province or Territory</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="province-or-territory" name="province-or-territory">
+      <input type="text" class="form-control" id="province-or-territory" name="province_or_territory">
     </div>
   </div>
   <div class="form-group row">
     <label for="postal-code" class="col-xs-2 col-form-label">Postal code of usual living arrangement</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="postal-code" name="postal-code">
+      <input type="text" class="form-control" id="postal-code" name="postal_code">
     </div>
   </div>
   <h3 class="form-header">Facility/Agency Identifier</h3>
   <div class="form-group row">
-    <label for="facility-identifier" class="col-xs-2 col-form-label">Facility or Agency Identifier</label>
+    <label for="facility-or-agency-id" class="col-xs-2 col-form-label">Facility or Agency Identifier</label>
     <div class="col-xs-10">
-      <input type="text" class="form-control" id="facility-identifier" name="facility-identifier">
+      <input type="text" class="form-control" id="facility-or-agency-id" name="facility_or_agency_id">
     </div>
   </div>
   <h3 class="form-header">Primary Language</h3>
@@ -108,11 +108,11 @@
       </select>
     </div>
     </div>
-    <h3 class="form-header">Interpretor Need</h3>
+    <h3 class="form-header">Interpreter Need</h3>
     <div class="form-group row">
-        <label for="interpretor-need">Interpretor Need</label>
+        <label for="interpreter-need">Interpreter Need</label>
         <div class="col-xs-10">
-        <select id="interpretor-need" class="form-control">
+        <select id="interpreter-need" class="form-control" name="interpreter_need">
           <option value=0 selected>No</option>
           <option value=1>Yes</option>
         </select>
@@ -121,10 +121,10 @@
       <h3 class="form-header">Reasons for Referral/Presentation</h3>
       <div class="form-group row">
           <label for="reason-for-referral">Reasons for Referral/Presentation</label>
-          <textarea class="form-control" rows="5" id="reason-for-referral"></textarea>
+          <textarea class="form-control" rows="5" id="reasons-for-referral" name="reasons_for_referral"></textarea>
         </div>
         <h3 class="form-header">Assessment Reference Date</h3>
-        <input id="date" type="date">
+        <input id="assessment_date" type="date" name=assessment_date>
       <div class="col-xs-10">
         <br />
           <button type="submit" class="btn btn-primary">Submit</button>

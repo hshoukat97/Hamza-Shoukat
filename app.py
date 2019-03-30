@@ -93,12 +93,12 @@ def dashboard():
     if request.method == "GET":
         cursor = g.db_conn.cursor()
         cursor.execute(' \
-            SELECT p.id, p.first_name, p.last_name, s.sex, p.time_recorded \
+            SELECT p.id, p.first_name, p.last_name, s.sex, p.last_updated \
             FROM patient AS p \
             JOIN sex AS s \
                 ON s.id = p.sex_id \
-            ORDER BY time_recorded DESC LIMIT 5;')
-        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex=row[3], time_recorded=row[4])
+            ORDER BY last_updated DESC LIMIT 5;')
+        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex=row[3], last_updated=row[4])
             for row in cursor.fetchall()]
         cursor.close()
 
@@ -111,15 +111,30 @@ def identification_information():
     
     elif request.method == 'POST':
         first_name = request.form['first_name']
+        middle_initial = request.form['middle_initial']
         last_name = request.form['last_name']
+        jr_sr = request.form['jr_sr']
         sex = request.form['sex']
+        dob = request.form['dob']
+        health_card_number = request.form['health_card_number']
+        province_or_territory_issued = request.form['province_or_territory_issued']
+        case_record_number = request.form['case_record_number']
+        province_or_territory = request.form['province_or_territory']
+        postal_code = request.form['postal_code']
+        facility_or_agency_id = request.form['facility_or_agency_id']
         primary_langauge_code = request.form['primary_language_code']
+        interpreter_need = request.form['interpreter_need']
+        reasons_for_referral = request.form['reasons_for_referral']
 
         cursor = g.db_conn.cursor()
         cursor.execute(' \
-            INSERT INTO patient(first_name, last_name, sex_id, primary_language_code) \
-            VALUES (%s, %s, %s, %s)', 
-            (first_name, last_name, sex, primary_langauge_code))
+            INSERT INTO patient(first_name, middle_initial, last_name, jr_sr, sex_id, dob, health_card_number, \
+                province_or_territory_issued, case_record_number, province_or_territory, postal_code, \
+                facility_or_agency_id, primary_language_code, interpreter_need, reasons_for_referral) \
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+            (first_name, middle_initial, last_name, jr_sr, sex, dob, health_card_number, province_or_territory_issued,
+                case_record_number, province_or_territory, postal_code, facility_or_agency_id, primary_langauge_code, 
+                interpreter_need, reasons_for_referral))
 
         g.db_conn.commit()
         cursor.close()

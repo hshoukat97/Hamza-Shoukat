@@ -2,13 +2,13 @@
 {% block mainContent %}
 
   <h1 class="top-header">Dashboard</h1>
-    <h2>Top 5 Most Recent Screener Results</h2>
+    <h2>Recently Added Patients</h2>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Name</th>
           <th>Sex</th>
-          <th>Time Recorded</th>
+          <th>Last Updated</th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +16,7 @@
           <tr>
             <td>{{ result.last_name }}, {{ result.first_name }}</td>
             <td>{{ result.sex }}</td> 
-            <td>{{result.time_recorded}}</td>
+            <td>{{result.last_updated}}</td>
           </tr>
         {% endfor %}
       </tbody>
