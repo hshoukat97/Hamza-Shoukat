@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g, request, redirect, url_for
+from flask import Flask, render_template, g, request, redirect, url_for, flash
 from flaskext.mysql import MySQL
 from flask_login import LoginManager, login_user , logout_user , current_user , login_required
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,7 +16,7 @@ app.config['MYSQL_DATABASE_USER'] = MYSQL_DATABASE_USER
 app.config['MYSQL_DATABASE_PASSWORD'] = MYSQL_DATABASE_PASSWORD
 app.config['MYSQL_DATABASE_DB'] = MYSQL_DATABASE_DB
 app.config['MYSQL_DATABASE_HOST'] = MYSQL_DATABASE_HOST
-app.config['SECRET_KEY'] = "r<ÄX¨:izÃrT×r@Æ65Bø-bf}'ë*¼Þ¡ÁýÙñëÃöKxGfT·7])f£mÕ`ëßW°=Ðs.s{üë¿¦"
+app.config['SECRET_KEY'] = 'r<ÄX¨:izÃrT×r@Æ65Bø-bf}"ë*¼Þ¡ÁýÙñëÃöKxGfT·7])f£mÕ`ëßW°=Ðs.s{üë¿¦'
 mysql.init_app(app)
 
 login_manager = LoginManager()
@@ -67,6 +67,26 @@ def index():
         return render_template('index.html', title='Home', screener_instance=
         screener_instance)
 
+@app.route('/team4/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html', title="Login")
+    '''
+    elif request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        registered_user = lookup_user(username, password)
+
+        if registered_user is None:
+            flash('Username or Password is invalid', 'error')
+            return redirect(url_for('login'))
+        else:
+            login_user(registered_user)
+            flash('Logged in successfully')
+            next_url = request.args.get('next')
+            return redirect(next_url or url_for('home'))
+        '''
 @app.route('/team4/dashboard')
 def dashboard():
     # Needs to be modified at some point to only return instances recorded by the assessor
@@ -88,11 +108,11 @@ def identification_information():
     elif request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
-        primary_langauge = request.form['primary_language']
+        primary_langauge_code = request.form['primary_language_code']
 
         cursor = g.db_conn.cursor()
-        cursor.execute('INSERT INTO screener_instance(first_name, last_name, primary_language) VALUES (%s, %s, %s)', 
-            (first_name, last_name, primary_langauge))
+        cursor.execute('INSERT INTO patient(first_name, last_name, primary_language_code) VALUES (%s, %s, %s)', 
+            (first_name, last_name, primary_langauge_code))
 
         g.db_conn.commit()
         cursor.close()
