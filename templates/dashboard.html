@@ -7,13 +7,15 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Sex ID</th>
           <th>Time Recorded</th>
         </tr>
       </thead>
       <tbody>
         {% for result in screener_instance %}
           <tr>
-            <td>{{ result.last_name }}, {{ result.first_name }}</td> 
+            <td>{{ result.last_name }}, {{ result.first_name }}</td>
+            <td>{{ result.sex }}</td> 
             <td>{{result.time_recorded}}</td>
           </tr>
         {% endfor %}

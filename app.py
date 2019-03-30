@@ -89,16 +89,16 @@ def login():
         '''
 @app.route('/team4/dashboard')
 def dashboard():
-    # Needs to be modified at some point to only return instances recorded by the assessor
+    # Needs to be modified at some point to only return instances recorded by the assessor and perform a join
     if request.method == "GET":
         cursor = g.db_conn.cursor()
-        cursor.execute('SELECT id, first_name, last_name, time_recorded FROM patient ORDER BY time_recorded DESC LIMIT 5')
-        screener_instance = [dict(id=row[0], first_name=row[1], last_name=
-            row[2], time_recorded=row[3]) for row in cursor.fetchall()]
+        cursor.execute('SELECT id, first_name, last_name, sex_id, time_recorded FROM patient ORDER BY time_recorded \
+            DESC LIMIT 5;')
+        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex_id=row[3], time_recorded=row[4])
+            for row in cursor.fetchall()]
         cursor.close()
 
-    return render_template('dashboard.html', title='Dashboard', screener_instance=
-        screener_instance)       
+    return render_template('dashboard.html', title='Dashboard', screener_instance=screener_instance)       
 
 @app.route('/team4/identification_information', methods=['GET', 'POST'])
 def identification_information():
@@ -108,11 +108,14 @@ def identification_information():
     elif request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
+        sex = request.form['sex']
         primary_langauge_code = request.form['primary_language_code']
 
         cursor = g.db_conn.cursor()
-        cursor.execute('INSERT INTO patient(first_name, last_name, primary_language_code) VALUES (%s, %s, %s)', 
-            (first_name, last_name, primary_langauge_code))
+        cursor.execute(' \
+            INSERT INTO patient(first_name, last_name, sex_id, primary_language_code) \
+            VALUES (%s, %s, %s, %s)', 
+            (first_name, last_name, sex, primary_langauge_code))
 
         g.db_conn.commit()
         cursor.close()
