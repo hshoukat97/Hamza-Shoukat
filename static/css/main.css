@@ -8,9 +8,10 @@ html, body {
 
 /* Main Body */
 
-.top-header .form-section-header {
+.top-header {
   text-align: center;
-  color: #323237;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .main-content {

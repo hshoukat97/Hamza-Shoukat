@@ -11,6 +11,7 @@ Repository for the interRAI Preliminary Screener web application (WAD course pro
 - Flask
 - flask-mysql
 - cryptography
+- flask-login
 
 ##### Development Dependencies
 - pylint

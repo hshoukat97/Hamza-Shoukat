@@ -1,5 +1,3 @@
-var assessment_urgency_score = 0;
-
 function get_self_reliance_index() {
   var cognitive_skills_value = document.getElementById("cognitive-skills").value;
   var bathing_value = document.getElementById("bathing").value;
@@ -7,9 +5,9 @@ function get_self_reliance_index() {
   var dressing_lower_body_value = document.getElementById("dressing-lower-body").value;
   var locomotion_value = document.getElementById("locomotion").value
 
-  if (cognitive_skills_value == 1 || bathing_value == 1 || 
-      personal_hygiene_value == 1 || dressing_lower_body_value == 1 ||
-      locomotion_value == 1) {
+  if (cognitive_skills_value === 1 || bathing_value === 1 || 
+      personal_hygiene_value === 1 || dressing_lower_body_value === 1 ||
+      locomotion_value === 1) {
     return self_reliant = false;
   }
   else {
@@ -20,7 +18,7 @@ function get_self_reliance_index() {
 function get_self_reported_health_value() {
   var self_reported_health_value = document.getElementById("self-reported-health").value;
   
-  if (self_reported_health_value == 0 || self_reported_health_value == 1) {
+  if (self_reported_health_value === 0 || self_reported_health_value === 1) {
     return true; 
   }
   else {
@@ -31,7 +29,7 @@ function get_self_reported_health_value() {
 function get_dyspnea_value() {
   var dyspnea_value = document.getElementById("dyspnea").value;
 
-  if (dyspnea_value == 1 || dyspnea_value == 2 || dyspnea_value == 3) {
+  if (dyspnea_value === 1 || dyspnea_value === 2 || dyspnea_value === 3) {
     return true;
   }
   else {
@@ -42,7 +40,7 @@ function get_dyspnea_value() {
 function get_unstable_value() {
   var instability_of_conditions_a_value = document.getElementById("instability-of-conditions-a").value;
 
-  if (instability_of_conditions_a_value == 1) {
+  if (instability_of_conditions_a_value === 1) {
     return true;
   }
   else {
@@ -53,7 +51,7 @@ function get_unstable_value() {
 function get_informal_helper_status() {
   var informal_helper_status_b_value = document.getElementById("informal-helper-status-b").value;
 
-  if (informal_helper_status_b_value == 1) {
+  if (informal_helper_status_b_value === 1) {
     return true;
   }
   else {
@@ -64,7 +62,7 @@ function get_informal_helper_status() {
 function get_self_reported_mood_value() {
   var self_reported_mood_value = document.getElementById("self-reported-mood").value;
 
-  if (self_reported_mood_value == 1) {
+  if (self_reported_mood_value === 1) {
     return true;
   }
   else {
@@ -75,7 +73,7 @@ function get_self_reported_mood_value() {
 function get_personal_hygiene_value() {
   var personal_hygiene_value = document.getElementById("personal-hygiene").value;
 
-  if (personal_hygiene_value == 1) {
+  if (personal_hygiene_value === 1) {
     return true;
   }
   else {
@@ -84,39 +82,39 @@ function get_personal_hygiene_value() {
 }
 
 function get_assessment_urgency_score() {
-  if (get_self_reliance_index() == true && get_self_reported_health_value() ==
-      false && (get_dyspnea_value() == false && get_unstable_value() == false)) {
+  if (get_self_reliance_index() === true && get_self_reported_health_value() ===
+      false && (get_dyspnea_value() === false && get_unstable_value() === false)) {
     return aua_score = 2;
   }
-  else if (get_self_reliance_index() == true && get_self_reported_health_value() ==
-            false && (get_dyspnea_value() == true || get_unstable_value() == true)) {
+  else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
+            false && (get_dyspnea_value() === true || get_unstable_value() === true)) {
     return aua_score = 3;
   }
-  else if (get_self_reliance_index() == true && get_self_reported_health_value() ==
-            true && get_unstable_value() == false) {
+  else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
+            true && get_unstable_value() === false) {
     return aua_score = 1;
   }
-  else if (get_self_reliance_index() == true && get_self_reported_health_value() ==
-            true && get_unstable_value() == true) {
+  else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
+            true && get_unstable_value() === true) {
     return aua_score = 3;
   }
-  else if (get_self_reliance_index() == false && get_informal_helper_status() == true) {
+  else if (get_self_reliance_index() === false && get_informal_helper_status() === true) {
     return aua_score = 6;
   }
-  else if (get_self_reliance_index() == false && get_informal_helper_status() == 
-            false && get_self_reported_mood_value() == true) {
+  else if (get_self_reliance_index() === false && get_informal_helper_status() === 
+            false && get_self_reported_mood_value() === true) {
     return aua_score = 6;
   }
-  else if (get_self_reliance_index() == false && get_informal_helper_status() == 
-            false && get_self_reported_mood_value() == false && 
-            get_personal_hygiene_value() == false) {
+  else if (get_self_reliance_index() === false && get_informal_helper_status() === 
+            false && get_self_reported_mood_value() === false && 
+            get_personal_hygiene_value() === false) {
     return aua_score = 4;
-}
-else if (get_self_reliance_index() == false && get_informal_helper_status() == 
-          false && get_self_reported_mood_value() == false && 
-          get_personal_hygiene_value() == true) {
+  }
+  else if (get_self_reliance_index() === false && get_informal_helper_status() === 
+          false && get_self_reported_mood_value() === false && 
+          get_personal_hygiene_value() === true) {
     return aua_score = 5;
-}
+  }
   else {
     return aua_score = "error";
   }

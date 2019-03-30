@@ -1,5 +1,7 @@
 from flask import Flask, render_template, g, request, redirect, url_for
 from flaskext.mysql import MySQL
+from flask_login import LoginManager, login_user , logout_user , current_user , login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -14,7 +16,13 @@ app.config['MYSQL_DATABASE_USER'] = MYSQL_DATABASE_USER
 app.config['MYSQL_DATABASE_PASSWORD'] = MYSQL_DATABASE_PASSWORD
 app.config['MYSQL_DATABASE_DB'] = MYSQL_DATABASE_DB
 app.config['MYSQL_DATABASE_HOST'] = MYSQL_DATABASE_HOST
+app.config['SECRET_KEY'] = "r<ÄX¨:izÃrT×r@Æ65Bø-bf}'ë*¼Þ¡ÁýÙñëÃöKxGfT·7])f£mÕ`ëßW°=Ðs.s{üë¿¦"
 mysql.init_app(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+#login_manager.login_view = 'login'
 
 @app.before_request
 def dbConnect():
@@ -41,13 +49,13 @@ def dashboard():
             row[2], time_recorded=row[3]) for row in cursor.fetchall()]
         cursor.close()
 
-    return render_template('dashboard.html', title='Home', screener_instance=
+    return render_template('dashboard.html', title='Dashboard', screener_instance=
         screener_instance)       
 
 @app.route('/team4/identification_information', methods=['GET', 'POST'])
 def identification_information():
     if request.method == 'GET':
-        return render_template('identification_information.html')
+        return render_template('identification_information.html', title="Identification Information")
     
     elif request.method == 'POST':
         first_name = request.form['first_name']
@@ -66,7 +74,7 @@ def identification_information():
 @app.route('/team4/screener_instance', methods=['GET', 'POST'])
 def screener_instance():
     if request.method == 'GET':
-        return render_template('screener_instance.html')
+        return render_template('screener_instance.html', title="Screener Instance")
     
     elif request.method == 'POST':
         return redirect(url_for('screener_instance'))

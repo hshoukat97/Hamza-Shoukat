@@ -1,13 +1,16 @@
 {% extends "layout.html" %}
 {% block mainContent %}
 
-<h2 class="form-section-header">Section B - Screener</h2>
-<h3>Search Patient</h3>
+<div class="top-header">
+  <h1>Section B - Add New Screener</h1>
+</div>
+
+<h2>Search Patient</h2>
 <label>Name:</label>
 <input type="text" class="text-box" id="name" name="name">
 <form class="new-instance" id="aua" action="/team4/screener_instance" method="post"
   enctype="application/x-www-form-urlencoded">
-  <h3 class="form-header">Cognitive Skills for Daily Decision Making</h3>
+  <h2 class="form-header">Cognitive Skills for Daily Decision Making</h2>
   <p class="description"><i>Making decisions regarding tasks of daily life -
       e.g., when to get up or have meals, which clothes to wear or
       activities to do</i>
@@ -16,31 +19,31 @@
     <option value=0>Independent</option>
     <option value=1>Modified independent or any impairment</option>
   </select>
-  <h3 class="form-header">Activities of Daily Living</h3>
+  <h2 class="form-header">Activities of Daily Living</h2>
   <p class="description"><i>Most dependent episode over last 24 hours. If
       ADL did not occur in the last 24 hours, code the most recent occurance.</i>
   </p>
-  <h4>Bathing</h4>
+  <h3>Bathing</h3>
   <select name="bathing" id="bathing">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
-  <h4>Personal Hygiene</h4>
+  <h3>Personal Hygiene</h3>
   <select name="personal-hygiene" id="personal-hygiene">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
-  <h4>Dressing Lower Body</h4>
+  <h3>Dressing Lower Body</h3>
   <select name="dressing-lower-body" id="dressing-lower-body">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
-  <h4>Locomotion</h4>
+  <h3>Locomotion</h3>
   <select name="locomotion" id="locomotion">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
-  <h3 class="form-header">Dyspnea (Shortness of Breath)</h3>
+  <h2 class="form-header">Dyspnea (Shortness of Breath)</h2>
   <select name="dyspnea" id="dyspnea">
     <option value=0>Absence of symptom</option>
     <option value=1>Absent at rest, but present
@@ -51,7 +54,7 @@
     </option>
     <option value=3>Present at rest</option>
   </select>
-  <h3 class="form-header">Self Reported Health</h3>
+  <h2 class="form-header">Self Reported Health</h2>
   <p class="description"><i>Ask, "In general, how would you rate your
       health?"</i>
   </p>
@@ -62,7 +65,7 @@
     <option value=3>Poor</option>
     <option value=8>Could not (would not) respond</option>
   </select>
-  <h3 class="form-header">Instability of Conditions</h3>
+  <h2 class="form-header">Instability of Conditions</h2>
   <p>Conditions/diseases make cognitive, ADL, mood, or behaviour patterns
     unstable (fluctuating, precarious, or deteriorating)</p>
   <select id="instability-of-conditions-a" name="instability-of-conditions-a">
@@ -74,7 +77,7 @@
     <option value=0>No</option>
     <option value=1>Yes</option>
   </select>
-  <h3 class="form-header">Self-Reported Mood</h3>
+  <h2 class="form-header">Self-Reported Mood</h2>
   <p class="description"><i>Ask, "IN LAST 3 DAYS, have you felt sad,
       depressed, or hopeless?"</i>
   </p>
@@ -83,7 +86,7 @@
     <option value=1>Yes</option>
     <option value=8>Could not (would not) respond</option>
   </select>
-  <h3 class="form-header">Informal Helper Status</h3>
+  <h2 class="form-header">Informal Helper Status</h2>
   <p>Primary informal helper expresses feelings of distress, anger, or depression</p>
   <select name="informal-helper-status-a" id="informal-helper-status-a">
     <option value=0>No</option>
