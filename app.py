@@ -92,9 +92,13 @@ def dashboard():
     # Needs to be modified at some point to only return instances recorded by the assessor and perform a join
     if request.method == "GET":
         cursor = g.db_conn.cursor()
-        cursor.execute('SELECT id, first_name, last_name, sex_id, time_recorded FROM patient ORDER BY time_recorded \
-            DESC LIMIT 5;')
-        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex_id=row[3], time_recorded=row[4])
+        cursor.execute(' \
+            SELECT p.id, p.first_name, p.last_name, s.sex, p.time_recorded \
+            FROM patient AS p \
+            JOIN sex AS s \
+                ON s.id = p.sex_id \
+            ORDER BY time_recorded DESC LIMIT 5;')
+        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex=row[3], time_recorded=row[4])
             for row in cursor.fetchall()]
         cursor.close()
 
