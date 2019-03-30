@@ -4,6 +4,13 @@ CREATE DATABASE IF NOT EXISTS pc_screener;
 
 USE pc_screener;
 
+CREATE TABLE IF NOT EXISTS users (
+	id				INT				NOT NULL		AUTO_INCREMENT		PRIMARY KEY, 
+    username		VARCHAR(32)		NOT NULL,
+    password		VARCHAR(32)		NOT NULL,
+    email			VARCHAR(64)		NOT NULL
+) ENGINE = InnoDB;
+
 CREATE TABLE IF NOT EXISTS primary_language (
 	id						SMALLINT			NOT NULL		AUTO_INCREMENT		PRIMARY KEY,
     primary_language_code	CHAR(3)				NOT NULL,
@@ -33,6 +40,11 @@ CREATE TABLE IF NOT EXISTS screener_instance (
 	FOREIGN KEY fk_patient_id (patient_id)
 	REFERENCES patient(id)
 ) ENGINE = InnoDB;
+
+INSERT INTO users (id, username, password, email) VALUES
+(default, "Mlukina", "test1234", "mikelukina@gmail.com"),
+(default, "HShoukat", "test5678", "test@gmail.com"),
+(default, "PMadziak", "conestogahi", "PMadziak@gmail.com"); 
 
 INSERT INTO primary_language (id, primary_language_code, primary_language) VALUES
 (default, "eng", "English"),

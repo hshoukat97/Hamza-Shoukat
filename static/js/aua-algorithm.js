@@ -1,9 +1,9 @@
 function get_self_reliance_index() {
-  var cognitive_skills_value = document.getElementById("cognitive-skills").value;
-  var bathing_value = document.getElementById("bathing").value;
-  var personal_hygiene_value = document.getElementById("personal-hygiene").value;  
-  var dressing_lower_body_value = document.getElementById("dressing-lower-body").value;
-  var locomotion_value = document.getElementById("locomotion").value
+  var cognitive_skills_value = parseInt(document.getElementById("cognitive-skills").value);
+  var bathing_value = parseInt(document.getElementById("bathing").value);
+  var personal_hygiene_value = parseInt(document.getElementById("personal-hygiene").value);  
+  var dressing_lower_body_value = parseInt(document.getElementById("dressing-lower-body").value);
+  var locomotion_value = parseInt(document.getElementById("locomotion").value);
 
   if (cognitive_skills_value === 1 || bathing_value === 1 || 
       personal_hygiene_value === 1 || dressing_lower_body_value === 1 ||
@@ -16,7 +16,7 @@ function get_self_reliance_index() {
 }
 
 function get_self_reported_health_value() {
-  var self_reported_health_value = document.getElementById("self-reported-health").value;
+  var self_reported_health_value = parseInt(document.getElementById("self-reported-health").value);
   
   if (self_reported_health_value === 0 || self_reported_health_value === 1) {
     return true; 
@@ -27,7 +27,7 @@ function get_self_reported_health_value() {
 }
 
 function get_dyspnea_value() {
-  var dyspnea_value = document.getElementById("dyspnea").value;
+  var dyspnea_value = parseInt(document.getElementById("dyspnea").value);
 
   if (dyspnea_value === 1 || dyspnea_value === 2 || dyspnea_value === 3) {
     return true;
@@ -38,7 +38,7 @@ function get_dyspnea_value() {
 }
 
 function get_unstable_value() {
-  var instability_of_conditions_a_value = document.getElementById("instability-of-conditions-a").value;
+  var instability_of_conditions_a_value = parseInt(document.getElementById("instability-of-conditions-a").value);
 
   if (instability_of_conditions_a_value === 1) {
     return true;
@@ -49,7 +49,7 @@ function get_unstable_value() {
 }
 
 function get_informal_helper_status() {
-  var informal_helper_status_b_value = document.getElementById("informal-helper-status-b").value;
+  var informal_helper_status_b_value = parseInt(document.getElementById("informal-helper-status-b").value);
 
   if (informal_helper_status_b_value === 1) {
     return true;
@@ -60,7 +60,7 @@ function get_informal_helper_status() {
 }
 
 function get_self_reported_mood_value() {
-  var self_reported_mood_value = document.getElementById("self-reported-mood").value;
+  var self_reported_mood_value = parseInt(document.getElementById("self-reported-mood").value);
 
   if (self_reported_mood_value === 1) {
     return true;
@@ -71,7 +71,7 @@ function get_self_reported_mood_value() {
 }
 
 function get_personal_hygiene_value() {
-  var personal_hygiene_value = document.getElementById("personal-hygiene").value;
+  var personal_hygiene_value = parseInt(document.getElementById("personal-hygiene").value);
 
   if (personal_hygiene_value === 1) {
     return true;
@@ -131,9 +131,11 @@ function calculate_aua_score() {
   console.log(get_assessment_urgency_score()); 
   
   if (get_assessment_urgency_score() >= 3) {
-    alert("Your assessment urgency score is " + get_assessment_urgency_score() + "\nThis patient requires a CHA assessment");
+    alert("Your assessment urgency score is " + get_assessment_urgency_score() + 
+      "\nThis patient requires a CHA assessment");
   }
   else {
-    alert("Your assessment urgency score is " + get_assessment_urgency_score() + "\nThis patient does not require a CHA assessment");
+    alert("Your assessment urgency score is " + get_assessment_urgency_score() + 
+      "\nThis patient does not require a CHA assessment");
   }
 }

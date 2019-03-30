@@ -5,8 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
-MYSQL_DATABASE_USER = 'Pmadziak'
-MYSQL_DATABASE_PASSWORD = 'test3'
+MYSQL_DATABASE_USER = 'Mlukina'
+MYSQL_DATABASE_PASSWORD = 'test1234'
 MYSQL_DATABASE_DB = 'pc_screener'
 MYSQL_DATABASE_HOST = 'localhost'
 MYSQL_DATABASE_PORT = 3306
@@ -23,6 +23,34 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 #login_manager.login_view = 'login'
+
+'''
+class User(object):
+    def __init__(self, id, username, password, email):
+        self.id = id
+        self.username = username
+        self.password = password
+        self.email = email
+
+    def set_password(self , password):
+        #self.password = generate_password_hash(password)
+        self.password = password
+
+    def check_password(self , password):
+        return self.password == password
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+'''
 
 @app.before_request
 def dbConnect():
