@@ -62,7 +62,6 @@ def logTeardown(exception=None):
 
 @app.route('/team4')
 def index():
-    # Needs to be modified at some point to only return instances recorded by the assessor
     if request.method == "GET":
         return render_template('index.html', title='Home', screener_instance=
         screener_instance)
@@ -147,6 +146,24 @@ def screener_instance():
         return render_template('screener_instance.html', title="Screener Instance")
     
     elif request.method == 'POST':
+        patient_id = request.form['patient_id']
+
+        self_reported_health = request.form['self_reported_health']
+        
+        assessment_urgency_score = request.form['assessment_urgency_score']
+        assessment_required = request.form['assessment_required']
+        assessor = request.form['assessor']
+
+        cursor = g.db_conn.cursor()
+        cursor.execute(' \
+            INSERT INTO screener_instance(patient_id, assessor, self_reported_health, assessment_urgency_score, \
+                assessment_required) \
+            VALUES (%s, %s, %s, %s, %s)',
+            (patient_id, assessor, self_reported_health, assessment_urgency_score, assessment_required))
+
+        g.db_conn.commit()
+        cursor.close()
+
         return redirect(url_for('screener_instance'))
     
 if __name__ == '__main__':

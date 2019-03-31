@@ -52,9 +52,12 @@ CREATE TABLE IF NOT EXISTS patient (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS screener_instance (
-	id 						INT 			  	NOT NULL 	  	AUTO_INCREMENT		PRIMARY KEY,
-    patient_id				INT					NOT NULL,
-    self_reported_health 	SMALLINT		  	NOT NULL,
+	id 							INT 			  	NOT NULL 	  	AUTO_INCREMENT		PRIMARY KEY,
+    patient_id					INT					NOT NULL,
+    assessor					VARCHAR(64), 
+    self_reported_health 		SMALLINT,
+    assessment_urgency_score	TINYINT,
+    assessment_required			CHAR(3),
 	FOREIGN KEY fk_patient_id (patient_id)
 		REFERENCES patient(id)
 ) ENGINE = InnoDB;
@@ -85,5 +88,5 @@ INSERT INTO patient (id, first_name, middle_initial, last_name, jr_sr, sex_id, d
 (default, "Mike", "J.", "Lukina", NULL, 1, "1990-03-15", "GMLEK2KW8G83", "ON", 777, "ON", "N2R 2F3", 1234, "eng", 1, "dementia", default),
 (default, "Tony", "P.", "Lukina", NULL, 2, "1992-04-03", "4Q525DXFNMRL", "BC", 888, "BC", "R3Y E2U", 5678, "fre", 2, "depression", default);
 
-INSERT INTO screener_instance (id, patient_id, self_reported_health) VALUES
-(default, 2, 0)
+INSERT INTO screener_instance (id, patient_id, assessor, self_reported_health, assessment_urgency_score, assessment_required) VALUES
+(default, 2, "Peter Madziak", 0, 2, "No");

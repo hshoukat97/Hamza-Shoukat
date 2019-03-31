@@ -81,7 +81,7 @@ function get_personal_hygiene_value() {
   }
 }
 
-function get_assessment_urgency_score() {
+function calculate_assessment_urgency_score() {
   if (get_self_reliance_index() === true && get_self_reported_health_value() ===
       false && (get_dyspnea_value() === false && get_unstable_value() === false)) {
     return aua_score = 2;
@@ -120,7 +120,16 @@ function get_assessment_urgency_score() {
   }
 }
 
-function calculate_aua_score() {
+function determine_necessity_of_cha_assessment() {
+  if (calculate_assessment_urgency_score() >= 3) {
+    return cha_assessment = "Yes";
+  }
+  else {
+    return cha_assessment = "No";
+    }
+}
+
+function test_aua() {
   console.log("self reliance index: " + get_self_reliance_index());
   console.log("self reported health value: " + get_self_reported_health_value());
   console.log("dyspnea value: " + get_dyspnea_value());
@@ -128,14 +137,13 @@ function calculate_aua_score() {
   console.log("informal helper value: " + get_informal_helper_status());
   console.log("self reported mood value: " + get_self_reported_mood_value());
   console.log("personal hygiene value: " + get_personal_hygiene_value());
-  console.log(get_assessment_urgency_score()); 
-  
-  if (get_assessment_urgency_score() >= 3) {
-    alert("Your assessment urgency score is " + get_assessment_urgency_score() + 
-      "\nThis patient requires a CHA assessment");
-  }
-  else {
-    alert("Your assessment urgency score is " + get_assessment_urgency_score() + 
-      "\nThis patient does not require a CHA assessment");
-  }
+  console.log(calculate_assessment_urgency_score());
+  console.log(determine_necessity_of_cha_assessment());
 }
+
+function get_assessment_summary() {
+  document.getElementById('assessment-urgency-score').value = calculate_assessment_urgency_score();
+  document.getElementById('assessment-required').value = determine_necessity_of_cha_assessment();
+}
+
+window.onload(get_assessment_summary());

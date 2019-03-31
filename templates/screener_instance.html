@@ -7,15 +7,18 @@
 
 <h2>Search Patient</h2>
 <label>Name:</label>
-<input type="text" class="text-box" id="name" name="name">
+<input type="text" class="form-control" id="search-patient-name" name="search_patient_name">
+
 <form class="new-instance" id="aua" action="/team4/screener_instance" method="post"
   enctype="application/x-www-form-urlencoded">
+  <h2 class="form-header">Patient ID</h2>
+    <input type="text" class="form-control" id="patient_id" name="patient_id" required>
   <h2 class="form-header">Cognitive Skills for Daily Decision Making</h2>
   <p class="description"><i>Making decisions regarding tasks of daily life -
       e.g., when to get up or have meals, which clothes to wear or
       activities to do</i>
   </p>
-  <select name="cognitive-skills" id="cognitive-skills">
+  <select class="form-control" name="cognitive-skills" id="cognitive-skills">
     <option value=0>Independent</option>
     <option value=1>Modified independent or any impairment</option>
   </select>
@@ -24,27 +27,27 @@
       ADL did not occur in the last 24 hours, code the most recent occurance.</i>
   </p>
   <h3>Bathing</h3>
-  <select name="bathing" id="bathing">
+  <select class="form-control" name="bathing" id="bathing">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
   <h3>Personal Hygiene</h3>
-  <select name="personal-hygiene" id="personal-hygiene">
+  <select class="form-control" name="personal-hygiene" id="personal-hygiene">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
   <h3>Dressing Lower Body</h3>
-  <select name="dressing-lower-body" id="dressing-lower-body">
+  <select class="form-control" name="dressing-lower-body" id="dressing-lower-body">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
   <h3>Locomotion</h3>
-  <select name="locomotion" id="locomotion">
+  <select class="form-control" name="locomotion" id="locomotion">
     <option value=0>Independent or set-up help only</option>
     <option value=1>Supervision or any physical assistance</option>
   </select>
   <h2 class="form-header">Dyspnea (Shortness of Breath)</h2>
-  <select name="dyspnea" id="dyspnea">
+  <select class="form-control" name="dyspnea" id="dyspnea">
     <option value=0>Absence of symptom</option>
     <option value=1>Absent at rest, but present
       when performed moderate activities
@@ -58,7 +61,7 @@
   <p class="description"><i>Ask, "In general, how would you rate your
       health?"</i>
   </p>
-  <select id="self-reported-health" name="self-reported-health">
+  <select class="form-control" id="self-reported-health" name="self_reported_health" onclick="get_assessment_summary()">
     <option value=0>Excellent</option>
     <option value=1>Good</option>
     <option value=2>Fair</option>
@@ -68,12 +71,12 @@
   <h2 class="form-header">Instability of Conditions</h2>
   <p>Conditions/diseases make cognitive, ADL, mood, or behaviour patterns
     unstable (fluctuating, precarious, or deteriorating)</p>
-  <select id="instability-of-conditions-a" name="instability-of-conditions-a">
+  <select class="form-control" id="instability-of-conditions-a" name="instability-of-conditions-a">
     <option value=0>No</option>
     <option value=1>Yes</option>
   </select>
   <p>Experiencing an acute episode, or a flare-up of a recurrent or chronic problem</p>
-  <select name="instability-of-conditions-b" id="instability-of-conditions-b">
+  <select class="form-control" name="instability-of-conditions-b" id="instability-of-conditions-b">
     <option value=0>No</option>
     <option value=1>Yes</option>
   </select>
@@ -81,25 +84,35 @@
   <p class="description"><i>Ask, "IN LAST 3 DAYS, have you felt sad,
       depressed, or hopeless?"</i>
   </p>
-  <select name="self-reported-mood" id="self-reported-mood">
+  <select class="form-control" name="self_reported_mood" id="self-reported-mood">
     <option value=0>No</option>
     <option value=1>Yes</option>
     <option value=8>Could not (would not) respond</option>
   </select>
   <h2 class="form-header">Informal Helper Status</h2>
   <p>Primary informal helper expresses feelings of distress, anger, or depression</p>
-  <select name="informal-helper-status-a" id="informal-helper-status-a">
+  <select class="form-control" name="informal-helper-status-a" id="informal-helper-status-a">
     <option value=0>No</option>
     <option value=1>Yes</option>
   </select>
   <p>Family of close friends report feeling overwhelmed by person's illness</p>
-  <select name="informal-helper-status-b" id="informal-helper-status-b">
+  <select class="form-control" name="informal-helper-status-b" id="informal-helper-status-b">
     <option value=0>No</option>
     <option value=1>Yes</option>
   </select>
+
+  <div class="top-header">
+    <h1>Section C - Summary</h1>
+  </div>
+  <label>Assessment Urgency Score:</label>
+      <input type="text" class="form-control" id="assessment-urgency-score" name="assessment_urgency_score" readonly>
+    <label>interRAI CHA Assessment Required?</label>
+      <input type="text" class="form-control" id="assessment-required" name="assessment_required" readonly>
+    <label>Person Coordinating/Completing the Screener</label>
+      <input type="text" class="form-control" id="assessor" name="assessor">
   <br /><br />
 
-  <button type="submit" class="btn btn-primary" onclick="calculate_aua_score()">Submit</button>
+  <button type="submit-screener-instance" class="btn btn-primary" onclick="test_aua()">Submit</button>
 </form>
 <br />
 
