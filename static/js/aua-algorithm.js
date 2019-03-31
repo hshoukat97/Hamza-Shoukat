@@ -84,48 +84,48 @@ function get_personal_hygiene_value() {
 function calculate_assessment_urgency_score() {
   if (get_self_reliance_index() === true && get_self_reported_health_value() ===
       false && (get_dyspnea_value() === false && get_unstable_value() === false)) {
-    return aua_score = 2;
+    return 2;
   }
   else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
             false && (get_dyspnea_value() === true || get_unstable_value() === true)) {
-    return aua_score = 3;
+    return 3;
   }
   else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
             true && get_unstable_value() === false) {
-    return aua_score = 1;
+    return 1;
   }
   else if (get_self_reliance_index() === true && get_self_reported_health_value() ===
             true && get_unstable_value() === true) {
-    return aua_score = 3;
+    return 3;
   }
   else if (get_self_reliance_index() === false && get_informal_helper_status() === true) {
-    return aua_score = 6;
+    return 6;
   }
   else if (get_self_reliance_index() === false && get_informal_helper_status() === 
             false && get_self_reported_mood_value() === true) {
-    return aua_score = 6;
+    return 6;
   }
   else if (get_self_reliance_index() === false && get_informal_helper_status() === 
             false && get_self_reported_mood_value() === false && 
             get_personal_hygiene_value() === false) {
-    return aua_score = 4;
+    return 4;
   }
   else if (get_self_reliance_index() === false && get_informal_helper_status() === 
           false && get_self_reported_mood_value() === false && 
           get_personal_hygiene_value() === true) {
-    return aua_score = 5;
+    return 5;
   }
   else {
-    return aua_score = "error";
+    return "error";
   }
 }
 
 function determine_necessity_of_cha_assessment() {
   if (calculate_assessment_urgency_score() >= 3) {
-    return cha_assessment = "Yes";
+    return "Yes";
   }
   else {
-    return cha_assessment = "No";
+    return "No";
     }
 }
 
@@ -139,6 +139,8 @@ function test_aua() {
   console.log("personal hygiene value: " + get_personal_hygiene_value());
   console.log(calculate_assessment_urgency_score());
   console.log(determine_necessity_of_cha_assessment());
+
+  alert('Testing... read console log')
 }
 
 function get_assessment_summary() {
@@ -146,4 +148,4 @@ function get_assessment_summary() {
   document.getElementById('assessment-required').value = determine_necessity_of_cha_assessment();
 }
 
-window.onload(get_assessment_summary());
+window.onload = get_assessment_summary();

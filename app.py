@@ -147,19 +147,34 @@ def screener_instance():
     
     elif request.method == 'POST':
         patient_id = request.form['patient_id']
-
+        cognitive_skills = request.form['cognitive_skills']
+        bathing = request.form['bathing']
+        personal_hygiene = request.form['personal_hygiene']
+        dressing_lower_body = request.form['dressing_lower_body']
+        locomotion = request.form['locomotion']
+        dyspnea = request.form['dyspnea']
         self_reported_health = request.form['self_reported_health']
-        
+        instability_of_conditions_a = request.form['instability_of_conditions_a']
+        instability_of_conditions_b = request.form['instability_of_conditions_b']
+        self_reported_mood = request.form['self_reported_mood']
+        informal_helper_status_a = request.form['informal_helper_status_a']
+        informal_helper_status_b = request.form['informal_helper_status_b']
+
         assessment_urgency_score = request.form['assessment_urgency_score']
         assessment_required = request.form['assessment_required']
         assessor = request.form['assessor']
 
         cursor = g.db_conn.cursor()
         cursor.execute(' \
-            INSERT INTO screener_instance(patient_id, assessor, self_reported_health, assessment_urgency_score, \
-                assessment_required) \
-            VALUES (%s, %s, %s, %s, %s)',
-            (patient_id, assessor, self_reported_health, assessment_urgency_score, assessment_required))
+            INSERT INTO screener_instance(patient_id, assessor, cognitive_skills, bathing, personal_hygiene, \
+            dressing_lower_body, locomotion, dyspnea, self_reported_health, instability_of_conditions_a, \
+            instability_of_conditions_b, self_reported_mood, informal_helper_status_a, informal_helper_status_b, \
+            assessment_urgency_score, assessment_required) \
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+            (patient_id, assessor, cognitive_skills, bathing, personal_hygiene, dressing_lower_body, locomotion, 
+                dyspnea, self_reported_health, instability_of_conditions_a, instability_of_conditions_b, 
+                self_reported_mood, informal_helper_status_a, informal_helper_status_b, assessment_urgency_score, 
+                assessment_required))
 
         g.db_conn.commit()
         cursor.close()
