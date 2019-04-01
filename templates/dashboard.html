@@ -1,25 +1,74 @@
 {% extends "layout.html" %}
 {% block mainContent %}
 
-  <h1 class="top-header">Dashboard</h1>
-    <h2>Recently Added Patients</h2>
+<h1 class="top-header">Dashboard</h1>
+
+<h2>Patients Requiring Full CHA Assessment</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Assessor</th>
+      <th>Assessment Urgency Score</th>
+      <th>Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for screener in required_cha_assessment %}
+      <tr>
+        <td>{{ screener.last_name }}, {{ screener.first_name }}</td>
+        <td>{{ screener.assessor }}</td>
+        <td>{{ screener.assessment_urgency_score }}</td>
+        <td>{{ screener.date_time_completed }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<h2>5 Most Recently Completed Screeners</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Assessor</th>
+      <th>Assessment Urgency Score</th>
+      <th>Requires CHA Assessment?</th>
+      <th>Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for screener in recent_screeners %}
+      <tr>
+        <td>{{ screener.last_name }}, {{ screener.first_name }}</td>
+        <td>{{ screener.assessor }}</td>
+        <td>{{ screener.assessment_urgency_score }}</td> 
+        <td>{{ screener.assessment_required }}</td>
+        <td>{{ screener.date_time_completed }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    <h2>5 Most Recently Added Patients</h2>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Patient Name</th>
           <th>Sex</th>
           <th>Last Updated</th>
         </tr>
       </thead>
       <tbody>
-        {% for result in screener_instance %}
+        {% for patient in recent_patients %}
           <tr>
-            <td>{{ result.last_name }}, {{ result.first_name }}</td>
-            <td>{{ result.sex }}</td> 
-            <td>{{result.last_updated}}</td>
+            <td>{{ patient.last_name }}, {{ patient.first_name }}</td>
+            <td>{{ patient.sex }}</td> 
+            <td>{{patient.last_updated}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    <br />
 
 {% endblock %}

@@ -88,20 +88,46 @@ def login():
         '''
 @app.route('/team4/dashboard')
 def dashboard():
-    # Needs to be modified at some point to only return instances recorded by the assessor and perform a join
+    # Try modifying at some point to only return instances recorded by the assessor logged in?
     if request.method == "GET":
         cursor = g.db_conn.cursor()
+
         cursor.execute(' \
             SELECT p.id, p.first_name, p.last_name, s.sex, p.last_updated \
             FROM patient AS p \
             JOIN sex AS s \
                 ON s.id = p.sex_id \
             ORDER BY last_updated DESC LIMIT 5;')
-        screener_instance = [dict(id=row[0], first_name=row[1], last_name= row[2], sex=row[3], last_updated=row[4])
+        recent_patients = [dict(id=row[0], first_name=row[1], last_name= row[2], sex=row[3], last_updated=row[4])
             for row in cursor.fetchall()]
+        
+        cursor.execute(' \
+            SELECT p.id, p.first_name, p.last_name, s.assessor, s.assessment_urgency_score, s.assessment_required, \
+                s.date_time_completed \
+            FROM patient AS p \
+            JOIN screener_instance AS s \
+                ON p.id = s.patient_id \
+            ORDER BY date_time_completed DESC LIMIT 5;')
+        recent_screeners = [dict(id=row[0], first_name=row[1], last_name= row[2], assessor=row[3], 
+            assessment_urgency_score=row[4], assessment_required=row[5], date_time_completed=row[6])
+            for row in cursor.fetchall()]
+        
+        cursor.execute(' \
+            SELECT p.id, p.first_name, p.last_name, s.assessor, s.assessment_urgency_score, s.assessment_required, \
+                s.date_time_completed \
+            FROM patient AS p \
+            JOIN screener_instance AS s \
+                ON p.id = s.patient_id \
+            WHERE s.assessment_urgency_score >= 3 \
+            ORDER BY s.assessment_urgency_score DESC, date_time_completed ASC;')
+        required_cha_assessment = [dict(id=row[0], first_name=row[1], last_name= row[2], assessor=row[3], 
+            assessment_urgency_score=row[4], date_time_completed=row[5])
+            for row in cursor.fetchall()]
+
         cursor.close()
 
-    return render_template('dashboard.html', title='Dashboard', screener_instance=screener_instance)       
+    return render_template('dashboard.html', title='Dashboard', required_cha_assessment=required_cha_assessment,
+        recent_patients=recent_patients, recent_screeners=recent_screeners)
 
 @app.route('/team4/identification_information', methods=['GET', 'POST'])
 def identification_information():
@@ -138,6 +164,7 @@ def identification_information():
         g.db_conn.commit()
         cursor.close()
 
+        flash('Form successfully submitted!')
         return redirect(url_for('screener_instance'))
 
 @app.route('/team4/screener_instance', methods=['GET', 'POST'])
@@ -179,6 +206,7 @@ def screener_instance():
         g.db_conn.commit()
         cursor.close()
 
+        flash('Form successfully submitted!')
         return redirect(url_for('screener_instance'))
     
 if __name__ == '__main__':

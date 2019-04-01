@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS screener_instance (
     informal_helper_status_b	TINYINT(1),
     assessment_urgency_score	TINYINT,
     assessment_required			CHAR(3),
+    date_time_completed			TIMESTAMP		DEFAULT				CURRENT_TIMESTAMP,
 	FOREIGN KEY fk_patient_id (patient_id)
 		REFERENCES patient(id)
 ) ENGINE = InnoDB;
@@ -116,5 +117,7 @@ INSERT INTO patient (id, first_name, middle_initial, last_name, jr_sr, sex_id, d
 
 INSERT INTO screener_instance (id, patient_id, assessor, cognitive_skills, bathing, personal_hygiene, dressing_lower_body, locomotion, dyspnea,
 	self_reported_health, instability_of_conditions_a, instability_of_conditions_b, self_reported_mood, informal_helper_status_a, 
-    informal_helper_status_b, assessment_urgency_score, assessment_required) VALUES
-(default, 2, "Peter Madziak", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, "No");
+    informal_helper_status_b, assessment_urgency_score, assessment_required, date_time_completed) VALUES
+(default, 2, "Hamza Shoukat", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 3, "Yes", default),
+(default, 1, "Hamza Shoukat", 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 2, "No", default),
+(default, 3, "Peter Madziak", 0, 1, 0, 0, 0, 0, 8, 1, 1, 8, 0, 1, 6, "Yes", default);
