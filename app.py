@@ -1,13 +1,13 @@
-from flask import Flask, render_template, g, request, redirect, url_for, flash
+from flask import Flask, render_template, g, request, redirect, url_for, flash, jsonify
 from flaskext.mysql import MySQL
 from flask_login import LoginManager, login_user , logout_user , current_user , login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
-MYSQL_DATABASE_USER = 'Mlukina'
+MYSQL_DATABASE_USER = 'mlukina'
 MYSQL_DATABASE_PASSWORD = 'test1234'
-MYSQL_DATABASE_DB = 'pc_screener'
+MYSQL_DATABASE_DB = 'pc_screener_4'
 MYSQL_DATABASE_HOST = 'localhost'
 MYSQL_DATABASE_PORT = 3306
 

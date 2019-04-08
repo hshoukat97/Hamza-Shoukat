@@ -1,4 +1,4 @@
-USE pc_screener;
+USE pc_screener_4;
 
 SELECT * FROM patient;
 SELECT * FROM screener_instance;

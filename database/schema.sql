@@ -1,8 +1,8 @@
 /* DATABASE SETUP */
 
-DROP DATABASE IF EXISTS pc_screener; 
-CREATE DATABASE IF NOT EXISTS pc_screener;
-USE pc_screener;
+DROP DATABASE IF EXISTS pc_screener_4; 
+CREATE DATABASE IF NOT EXISTS pc_screener_4;
+USE pc_screener_4;
 
 /* CREATES USER TABLE FOR LOGIN */ 
 
@@ -23,12 +23,6 @@ CREATE TABLE IF NOT EXISTS sex (
 CREATE TABLE IF NOT EXISTS primary_language (
     primary_language_code	CHAR(3)				NOT NULL		PRIMARY KEY,
     primary_language		VARCHAR(7)			NOT NULL
-) ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS self_reported_health (
-	id									TINYINT				NOT NULL		AUTO_INCREMENT		PRIMARY KEY,
-    self_reported_health_value			TINYINT				NOT NULL,
-    self_reported_health_description	VARCHAR(32)			NOT NULL
 ) ENGINE = InnoDB;
 
 /* CREATES MAIN PATIENT TABLE */
@@ -57,6 +51,14 @@ CREATE TABLE IF NOT EXISTS patient (
 		REFERENCES sex(id)
 ) ENGINE = InnoDB;
 
+/* CREATES SCREENER INSTANCE LOOKUP TABLES */
+
+CREATE TABLE IF NOT EXISTS self_reported_health (
+	id									TINYINT				NOT NULL		AUTO_INCREMENT		PRIMARY KEY,
+    self_reported_health_value			TINYINT				NOT NULL,
+    self_reported_health_description	VARCHAR(32)			NOT NULL
+) ENGINE = InnoDB;
+
 /* CREATES MAIN SCREENER INSTANCE TABLE */
 
 CREATE TABLE IF NOT EXISTS screener_instance (
@@ -81,8 +83,6 @@ CREATE TABLE IF NOT EXISTS screener_instance (
 	FOREIGN KEY fk_patient_id (patient_id)
 		REFERENCES patient(id)
 ) ENGINE = InnoDB;
-
-/* CREATES SCREENER INSTANCE LOOKUP TABLES */
 
 /* INSERTS DATA INTO LOOKUP TABLES */ 
 
